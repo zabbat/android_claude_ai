@@ -1,33 +1,22 @@
 package com.example.myapplicationclaude.feature.message.presentation
 
 import app.cash.turbine.test
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.resetMain
+import com.example.myapplicationclaude.feature.message.CoroutineTestExtension
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 
-@OptIn(ExperimentalCoroutinesApi::class)
+@ExtendWith(CoroutineTestExtension::class)
 class MessageViewModelTest {
 
-    private val testDispatcher = StandardTestDispatcher()
     private lateinit var viewModel: MessageViewModel
 
     @BeforeEach
     fun setup() {
-        Dispatchers.setMain(testDispatcher)
         viewModel = MessageViewModel()
-    }
-
-    @AfterEach
-    fun tearDown() {
-        Dispatchers.resetMain()
     }
 
     @Test

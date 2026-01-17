@@ -2,9 +2,12 @@ name: Android Build
 
 on:
   push:
-    branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !contains(fromJSON('["refs/heads/main", "refs/heads/develop", "refs/heads/release"]'), github.ref) && !startsWith(github.ref, 'refs/heads/release/') }}
 
 jobs:
   build:

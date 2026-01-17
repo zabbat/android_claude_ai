@@ -46,11 +46,15 @@ core/                   # Shared utilities
   - Prompt user: "You are currently on [branch name]. I recommend creating a feature branch off develop first. Would you like me to create a feature branch, or continue on this branch?"
   - Wait for user confirmation before making any code changes
   - Exception: Documentation-only changes (*.md files) can be done on any branch
+- **Commit Confirmation**:
+  - NEVER commit without explicit user confirmation
+  - Before executing `git commit`, ask: "Ready to commit these changes?"
+  - Wait for user to confirm before proceeding with commit
+  - Show a brief summary of what will be committed
 - **Push Confirmation**:
   - NEVER push to remote without explicit user confirmation
   - Before executing `git push`, ask: "Ready to push [branch name] to remote?"
   - Wait for user to confirm before proceeding with push
-  - Local commits are fine without asking, but pushing requires confirmation
 - **Changelog**: Add significant changes to CHANGELOG.md under `[Unreleased]` section
   - Use categories: Added, Changed, Deprecated, Removed, Fixed, Security
   - Examples of significant changes: new features, architecture changes, breaking changes

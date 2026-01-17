@@ -11,6 +11,7 @@ import androidx.navigation.toRoute
 import com.example.myapplicationclaude.core.ui.theme.MyApplicationClaudeTheme
 import com.example.myapplicationclaude.feature.greeting.presentation.GreetingScreen
 import com.example.myapplicationclaude.feature.message.presentation.MessageScreen
+import com.example.myapplicationclaude.feature.details.presentation.DetailsScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -18,6 +19,9 @@ object GreetingRoute
 
 @Serializable
 data class MessageRoute(val name: String)
+
+@Serializable
+object DetailsRoute
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +39,9 @@ class MainActivity : ComponentActivity() {
                         GreetingScreen(
                             onNavigateToMessage = { name ->
                                 navController.navigate(MessageRoute(name))
+                            },
+                            onNavigateToDetails = {
+                                navController.navigate(DetailsRoute)
                             }
                         )
                     }
@@ -42,6 +49,16 @@ class MainActivity : ComponentActivity() {
                         val messageRoute = backStackEntry.toRoute<MessageRoute>()
                         MessageScreen(
                             name = messageRoute.name,
+                            onNavigateBack = {
+                                navController.popBackStack()
+                            },
+                            onNavigateToDetails = {
+                                navController.navigate(DetailsRoute)
+                            }
+                        )
+                    }
+                    composable<DetailsRoute> {
+                        DetailsScreen(
                             onNavigateBack = {
                                 navController.popBackStack()
                             }

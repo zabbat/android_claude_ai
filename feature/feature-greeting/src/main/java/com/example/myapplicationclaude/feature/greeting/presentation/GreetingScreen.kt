@@ -26,6 +26,7 @@ import com.example.myapplicationclaude.core.ui.theme.MyApplicationClaudeTheme
 @Composable
 fun GreetingScreen(
     onNavigateToMessage: (String) -> Unit = {},
+    onNavigateToDetails: () -> Unit = {},
     viewModel: GreetingViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
@@ -33,7 +34,8 @@ fun GreetingScreen(
     GreetingContent(
         state = state,
         onIntent = viewModel::handleIntent,
-        onNavigateToMessage = { onNavigateToMessage(state.name) }
+        onNavigateToMessage = { onNavigateToMessage(state.name) },
+        onNavigateToDetails = onNavigateToDetails
     )
 }
 
@@ -42,7 +44,8 @@ fun GreetingScreen(
 internal fun GreetingContent(
     state: GreetingState,
     onIntent: (GreetingIntent) -> Unit,
-    onNavigateToMessage: () -> Unit = {}
+    onNavigateToMessage: () -> Unit = {},
+    onNavigateToDetails: () -> Unit = {}
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -71,6 +74,10 @@ internal fun GreetingContent(
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = onNavigateToMessage) {
                 Text("Go to Message")
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(onClick = onNavigateToDetails) {
+                Text("Details")
             }
         }
     }

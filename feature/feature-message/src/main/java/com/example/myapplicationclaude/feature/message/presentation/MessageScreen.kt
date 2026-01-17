@@ -12,13 +12,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun MessageScreen(
+    name: String,
     onNavigateBack: () -> Unit = {},
     viewModel: MessageViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
 
     MessageContent(
-        state = state,
+        name = name,
         onIntent = viewModel::handleIntent,
         onNavigateBack = onNavigateBack
     )
@@ -27,7 +28,7 @@ fun MessageScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MessageContent(
-    state: MessageState,
+    name: String,
     onIntent: (MessageIntent) -> Unit,
     onNavigateBack: () -> Unit = {}
 ) {
@@ -55,7 +56,7 @@ internal fun MessageContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = state.message)
+            Text(text = "Hello $name")
         }
     }
 }

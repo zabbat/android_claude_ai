@@ -41,6 +41,11 @@ core/                   # Shared utilities
 ## Git & Commits
 - Branch naming: `feature/description`
 - Commit messages: Conventional commits format
+- **Protected Branch Warning**:
+  - If currently on `develop` or `main` branch and about to generate/modify code, STOP
+  - Prompt user: "You are currently on [branch name]. I recommend creating a feature branch off develop first. Would you like me to create a feature branch, or continue on this branch?"
+  - Wait for user confirmation before making any code changes
+  - Exception: Documentation-only changes (*.md files) can be done on any branch
 - **Changelog**: Add significant changes to CHANGELOG.md under `[Unreleased]` section
   - Use categories: Added, Changed, Deprecated, Removed, Fixed, Security
   - Examples of significant changes: new features, architecture changes, breaking changes

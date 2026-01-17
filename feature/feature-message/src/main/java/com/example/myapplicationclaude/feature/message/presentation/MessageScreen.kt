@@ -14,6 +14,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun MessageScreen(
     name: String,
     onNavigateBack: () -> Unit = {},
+    onNavigateToDetails: () -> Unit = {},
     viewModel: MessageViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
@@ -21,7 +22,8 @@ fun MessageScreen(
     MessageContent(
         name = name,
         onIntent = viewModel::handleIntent,
-        onNavigateBack = onNavigateBack
+        onNavigateBack = onNavigateBack,
+        onNavigateToDetails = onNavigateToDetails
     )
 }
 
@@ -30,7 +32,8 @@ fun MessageScreen(
 internal fun MessageContent(
     name: String,
     onIntent: (MessageIntent) -> Unit,
-    onNavigateBack: () -> Unit = {}
+    onNavigateBack: () -> Unit = {},
+    onNavigateToDetails: () -> Unit = {}
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -57,6 +60,10 @@ internal fun MessageContent(
             verticalArrangement = Arrangement.Center
         ) {
             Text(text = "Hello $name")
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(onClick = onNavigateToDetails) {
+                Text("Details")
+            }
         }
     }
 }

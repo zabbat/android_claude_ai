@@ -51,6 +51,9 @@ class MainActivity : ComponentActivity() {
                             name = messageRoute.name,
                             onNavigateBack = {
                                 navController.popBackStack()
+                            },
+                            onNavigateToDetails = {
+                                navController.navigate(DetailsRoute)
                             }
                         )
                     }

@@ -1,4 +1,4 @@
-package com.example.myapplicationclaude.feature.message.presentation
+package com.example.myapplicationclaude.feature.details.presentation
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -11,35 +11,31 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun MessageScreen(
-    name: String,
+fun DetailsScreen(
     onNavigateBack: () -> Unit = {},
-    onNavigateToDetails: () -> Unit = {},
-    viewModel: MessageViewModel = viewModel()
+    viewModel: DetailsViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
 
-    MessageContent(
-        name = name,
+    DetailsContent(
+        state = state,
         onIntent = viewModel::handleIntent,
-        onNavigateBack = onNavigateBack,
-        onNavigateToDetails = onNavigateToDetails
+        onNavigateBack = onNavigateBack
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun MessageContent(
-    name: String,
-    onIntent: (MessageIntent) -> Unit,
-    onNavigateBack: () -> Unit = {},
-    onNavigateToDetails: () -> Unit = {}
+internal fun DetailsContent(
+    state: DetailsState,
+    onIntent: (DetailsIntent) -> Unit,
+    onNavigateBack: () -> Unit = {}
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Message") },
+                title = { Text("Details") },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(
@@ -59,11 +55,15 @@ internal fun MessageContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = "Hello $name")
+            Text(
+                text = "Current Date",
+                style = MaterialTheme.typography.headlineMedium
+            )
             Spacer(modifier = Modifier.height(16.dp))
-            Button(onClick = onNavigateToDetails) {
-                Text("Details")
-            }
+            Text(
+                text = state.currentDate,
+                style = MaterialTheme.typography.bodyLarge
+            )
         }
     }
 }

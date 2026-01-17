@@ -26,4 +26,5 @@ include(":core:core-domain")
 include(":core:core-data")
 include(":feature:feature-greeting")
 include(":feature:feature-message")
+include(":feature:feature-details")
  

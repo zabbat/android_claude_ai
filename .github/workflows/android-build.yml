@@ -6,7 +6,7 @@ on:
     branches: [ main, develop ]
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: ${{ !contains(fromJSON('["refs/heads/main", "refs/heads/develop", "refs/heads/release"]'), github.ref) && !startsWith(github.ref, 'refs/heads/release/') }}
 
 jobs:

@@ -45,6 +45,11 @@ core/                   # Shared utilities
   - Use categories: Added, Changed, Deprecated, Removed, Fixed, Security
   - Examples of significant changes: new features, architecture changes, breaking changes
   - Small fixes and routine updates can be in git commits only
+- **AI Changelog**: For larger AI-assisted changes, create detailed documentation in `ai_changelog/`
+  - File naming: `YYYY-MM-DD_description.md`
+  - Document: what changed, why, files affected, impact, and next steps
+  - See `ai_changelog/README.md` for template and guidelines
+  - Examples: major refactorings, new feature implementations, architecture changes
 
 ## Android-Specific Notes
 - Always include proper lifecycle handling
@@ -71,5 +76,17 @@ core/                   # Shared utilities
 - Always create corresponding layout XML files for Activities/Fragments
 - Follow Android resource naming conventions (activity_name.xml, fragment_name.xml)
 - For significant changes (new features, architecture changes), update CHANGELOG.md
+- For larger AI development sessions, create a detailed log in `ai_changelog/YYYY-MM-DD_description.md`
 - Keep git commits focused and atomic
+
+## Documentation Structure
+- **CHANGELOG.md** - User-facing changelog organized by version
+- **ai_changelog/** - Detailed logs of AI development sessions
+  - Create new file for each major AI session
+  - Include technical details, reasoning, and context
+  - Helps track AI work and decisions over time
+- **documentation/** - Technical documentation for the project
+  - ARCHITECTURE.md - Architecture overview
+  - MODULE_STRUCTURE.md - Visual structure and diagrams
+  - QUICK_START.md - Getting started guide
 

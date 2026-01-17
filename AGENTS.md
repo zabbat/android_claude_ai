@@ -39,8 +39,12 @@ core/                   # Shared utilities
 - Use JUnit 5 and Mockk
 
 ## Git & Commits
-- Branch naming: `feature/description` 
+- Branch naming: `feature/description`
 - Commit messages: Conventional commits format
+- **Changelog**: Add significant changes to CHANGELOG.md under `[Unreleased]` section
+  - Use categories: Added, Changed, Deprecated, Removed, Fixed, Security
+  - Examples of significant changes: new features, architecture changes, breaking changes
+  - Small fixes and routine updates can be in git commits only
 
 ## Android-Specific Notes
 - Always include proper lifecycle handling
@@ -66,5 +70,6 @@ core/                   # Shared utilities
 - When adding dependencies, add to module-level build.gradle, and use the toml file for versioning
 - Always create corresponding layout XML files for Activities/Fragments
 - Follow Android resource naming conventions (activity_name.xml, fragment_name.xml)
-```
+- For significant changes (new features, architecture changes), update CHANGELOG.md
+- Keep git commits focused and atomic
 

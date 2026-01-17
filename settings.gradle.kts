@@ -25,4 +25,5 @@ include(":core:core-ui")
 include(":core:core-domain")
 include(":core:core-data")
 include(":feature:feature-greeting")
+include(":feature:feature-message")
  

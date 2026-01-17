@@ -5,7 +5,12 @@
       "Bash(ls:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(./gradlew build:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge develop --no-ff -m \"$\\(cat <<''EOF''\nMerge branch ''develop'' into main\n\nMerging navigation feature implementation from develop branch.\n\nThis merge brings in the complete navigation system with:\n- Navigation Compose integration\n- New feature-message module with MVI pattern\n- App bars with titles on all screens\n- Back navigation support\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git branch:*)",
+      "Bash(git cherry-pick:*)"
     ]
   }
 }
